@@ -19,7 +19,6 @@ class MyTasks extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-
             context: context,
             builder: (BuildContext context) {
               return const TaskTypesBottomSheet();

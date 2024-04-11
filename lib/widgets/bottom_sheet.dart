@@ -11,42 +11,22 @@ class TaskTypesBottomSheet extends ConsumerWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        _buildListTile(
-          context,
-          'None',
-          () {
-            provider.setGroupType(GroupType.none);
-          },
-        ),
-        _buildListTile(
-          context,
-          'Due Date',
-          () {
-            provider.setGroupType(GroupType.byDueDate);
-          },
-        ),
-        _buildListTile(
-          context,
-          'Task List',
-          () {
-            provider.setGroupType(GroupType.byTaskList);
-          },
-        ),
-        _buildListTile(
-          context,
-          'Tag',
-          () {
-            provider.setGroupType(GroupType.byTag);
-          },
-        ),
+        _buildListTile(context, 'None', provider, GroupType.none),
+        _buildListTile(context, 'Due Date', provider, GroupType.byDueDate),
+        _buildListTile(context, 'Task List', provider, GroupType.byTaskList),
+        _buildListTile(context, 'Tag', provider, GroupType.byTag),
       ],
     );
   }
 
-  Widget _buildListTile(BuildContext context, String option, Function() onTap) {
+  Widget _buildListTile(BuildContext context, String option,
+      GroupTypeController provider, GroupType groupType) {
     return ListTile(
       title: Text(option),
-      onTap: onTap,
+      onTap: () {
+        provider.setGroupType(groupType);
+        Navigator.pop(context);
+      },
     );
   }
 }
