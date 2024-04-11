@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'my_tasks.dart';
 import 'tag.dart';
@@ -6,7 +7,7 @@ import 'task.dart';
 import 'task_list.dart';
 
 void main() {
-  runApp(const TasksApp());
+  runApp(const ProviderScope(child:  TasksApp()));
 }
 
 // An app that groups tasks in various ways
